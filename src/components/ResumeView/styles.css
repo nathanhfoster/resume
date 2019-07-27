@@ -1,0 +1,9 @@
+@import "./stylesM.css";
+
+.ResumeView {
+    padding: 0 40px;
+}
+
+.ExperienceTitle {
+  font-size: 24px;
+}

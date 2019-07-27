@@ -1,0 +1,9 @@
+@import "./stylesM.css";
+
+.TechnicalSkill ul {
+  margin: 1px;
+}
+
+.TechnicalSkill .Skill:not(:last-child)::after {
+  content: ", ";
+}

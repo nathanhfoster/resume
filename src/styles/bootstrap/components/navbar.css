@@ -1,0 +1,25 @@
+.navbar-brand {
+  color: var(--primaryColor) !important;
+  font-weight: bold;
+  font-family: "Varela Round", sans-serif;
+}
+.navbar-brand,
+.navbar-brand * {
+  padding: 0 !important;
+  font-size: 24px;
+}
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+  cursor: pointer;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:hover {
+  outline: 0;
+}
+
+.nav-item {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: var(--navBarImageHeight);
+}

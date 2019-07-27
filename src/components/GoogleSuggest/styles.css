@@ -1,0 +1,30 @@
+@import "./stylesM.css";
+
+.Template {
+}
+
+.LocationResultsWrapper {
+  background-color: white;
+  color: black;
+  padding: 8px;
+  border-bottom: 1px solid white;
+}
+
+.hijnLS {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: var(--primaryBoxShadow);
+  z-index: 2;
+  height: 200px;
+  overflow: auto;
+}
+
+.hijnLS::-webkit-scrollbar {
+  display: block;
+}
