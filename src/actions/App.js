@@ -1,6 +1,5 @@
 import { ReduxActions } from "../constants";
 import { Axios } from ".";
-import Cookies from "js-cookie";
 import qs from "qs";
 
 const setWindow = Window => ({

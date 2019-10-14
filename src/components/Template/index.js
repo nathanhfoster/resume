@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "reactstrap";
 import { connect as reduxConnect } from "react-redux";
@@ -9,7 +9,7 @@ const mapStateToProps = ({}) => ({});
 
 const mapDispatchToProps = {};
 
-class Template extends Component {
+class Template extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,7 @@ class Template extends Component {
     return true;
   }
 
-  componentWillUpdate() {}
+  componentWillUpdate(nextProps, nextState) {}
 
   componentDidMount() {}
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect as reduxConnect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { RouteMap } from "../../routes";
+import { RouteMap } from "../../ReactRouter/routes";
 import PropTypes from "prop-types";
 import "./styles.css";
 import {

@@ -1,7 +1,6 @@
 import { ReduxActions } from "../constants";
 import { Axios } from ".";
 import qs from "qs";
-import Cookies from "js-cookie";
 import { CookieMap } from "../constants";
 import { RefreshPatchUser } from "./User";
 import { GetUserSettings } from "./Settings";
@@ -12,7 +11,6 @@ const SocialAuthentication = payload => dispatch => {
     .post(`social-authentications/${provider_id}/provider/`, qs.stringify(payload))
     .then(res => {
       const { token, id } = res.data;
-      Cookies.set(CookieMap.USER_TOKEN, token);
       dispatch(RefreshPatchUser(token, id));
       dispatch(GetUserSettings(token, id));
       dispatch({

@@ -1,6 +1,5 @@
 import { ReduxActions } from "../constants";
 import { Axios, AxiosForm } from ".";
-import Cookies from "js-cookie";
 import qs from "qs";
 import { CookieMap } from "../constants";
 import { GetUserSettings } from "./Settings";
@@ -12,12 +11,6 @@ const UserLogin = (payload, rememberMe) => dispatch =>
     .post("login/", qs.stringify(payload))
     .then(res => {
       const { id, token } = res.data;
-      const eightHours = 1 / 3;
-      rememberMe
-        ? Cookies.set(CookieMap.USER_TOKEN, res.data.token)
-        : Cookies.set(CookieMap.USER_TOKEN, res.data.token, {
-            expires: eightHours
-          });
       dispatch(RefreshPatchUser(token, id));
       dispatch(GetUserSettings(token, id));
       dispatch({
@@ -31,7 +24,6 @@ const RefreshPatchUser = (token, id) => dispatch =>
   Axios(token)
     .get(`users/${id}/refresh/`)
     .then(res => {
-      Cookies.set(CookieMap.USER_LAST_LOGIN, new Date());
       dispatch({
         type: ReduxActions.USER_SET,
         payload: res.data
@@ -47,7 +39,6 @@ const RefreshPatchUser = (token, id) => dispatch =>
     );
 
 const UserLogout = () => dispatch => {
-  Cookies.remove(CookieMap.USER_TOKEN);
   return dispatch({
     type: ReduxActions.USER_SET_LOGOUT,
     payload: null
@@ -71,7 +62,6 @@ const UpdateProfile = (id, token, payload) => async dispatch => {
   return await AxiosForm(token, payload)
     .patch(`users/${id}/`, payload)
     .then(res => {
-      res.data.token = Cookies.get(CookieMap.USER_TOKEN);
       dispatch({
         type: ReduxActions.USER_UPDATE_SUCCESS,
         payload: res.data
@@ -81,7 +71,6 @@ const UpdateProfile = (id, token, payload) => async dispatch => {
 };
 
 const Logout = () => dispatch => {
-  Cookies.remove(CookieMap.USER_TOKEN);
   return dispatch({
     type: ReduxActions.USER_SET_LOGOUT,
     payload: null

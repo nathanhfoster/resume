@@ -4,7 +4,7 @@ import { FormGroup, Label, Input } from "reactstrap";
 import { connect as reduxConnect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { RouterLinkPush } from "../../helpers/routing";
-import { RouteMap } from "../../routes";
+import { RouteMap } from "../../ReactRouter/routes";
 import "./styles.css";
 
 const mapStateToProps = ({}) => ({});

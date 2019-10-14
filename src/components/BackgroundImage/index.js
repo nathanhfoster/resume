@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect as reduxConnect } from "react-redux";
-import { RouteMap } from "../../routes";
+import { RouteMap } from "../../ReactRouter/routes";
 import "./styles.css";
 import LoginImage from "../../images/Login.jpg";
 
