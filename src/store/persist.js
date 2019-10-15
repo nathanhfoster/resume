@@ -1,12 +1,12 @@
-const LocalStorageName = "ReduxStore"
+const LocalStorageName = "ReduxStore";
 
 const getState = () => {
-  let State = {};
+  let state = {};
   const localState = localStorage[LocalStorageName];
   if (localState) {
-    State = JSON.parse(localState);
+    state = JSON.parse(localState);
   }
-  return State;
+  return state;
 };
 
 const saveState = () => (dispatch, getState) => {
