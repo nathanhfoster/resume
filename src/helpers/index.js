@@ -1,39 +1,35 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+const getRandomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({ [item[keyField]]: item })));
+const arrayToObject = (arr, keyField) =>
+  Object.assign({}, ...arr.map(item => ({ [item[keyField]]: item })));
+
 const objectToArray = obj => Object.keys(obj).map(key => obj[key]);
+
 const DeepCopy = arrayOrObj => JSON.parse(JSON.stringify(arrayOrObj));
-const isEquivalent = (obj1, obj2) => JSON.stringify(obj1) == JSON.stringify(obj2);
-const isOnline = last_login => new Date() - new Date(last_login) <= 1000 * 60 * 5;
-const findMaxInt = (arrayOfObjs, prop) => Math.max(...arrayOfObjs.map(e => e[prop]));
-const sortedMap = map => new Map([...map.entries()].sort().sort((a, b) => b[1] - a[1]));
+
+const isEquivalent = (obj1, obj2) =>
+  JSON.stringify(obj1) === JSON.stringify(obj2);
+
+const isOnline = last_login =>
+  new Date() - new Date(last_login) <= 1000 * 60 * 5;
+
+const findMaxInt = (arrayOfObjs, prop) =>
+  Math.max(...arrayOfObjs.map(e => e[prop]));
+
+const sortedMap = map =>
+  new Map([...map.entries()].sort().sort((a, b) => b[1] - a[1]));
+
 const RemoveArrayDuplicates = array => [...new Set(array)];
+
 const isSubset = (arr1, arr2) => arr2.every(e => arr1.includes(e));
-
-/*{
-  // console.log(arr1, arr2);
-  const hset = new Map();
-
-  // hset stores all the values of arr1
-  for (let i = 0; i < arr1.length; i++) {
-    if (!hset.has(arr1[i])) hset.set(arr1[i]);
-  }
-
-  // loop to check if all elements of arr2 also
-  // lies in arr1
-  for (let i = 0; i < arr2.length; i++) {
-    if (!hset.has(arr2[i])) return false;
-  }
-  return true;
-};*/
 
 const TopKFrequentStrings = (arrayOfObjs, prop, k) => {
   let map = new Map();
   for (let i = 0; i < arrayOfObjs.length; i++) {
     const s = arrayOfObjs[i][prop];
-    if (s != undefined && s.length > 0) map.has(s) ? map.set(s, map.get(s) + 1) : map.set(s, 1);
+    if (s != undefined && s.length > 0)
+      map.has(s) ? map.set(s, map.get(s) + 1) : map.set(s, 1);
   }
 
   const newArray = [...sortedMap(map).keys()].slice(0, k);
@@ -69,7 +65,11 @@ const joinStrings = objectArray => {
     return objectArray;
   }
   if (Array.isArray(objectArray)) {
-    return objectArray.map(i => (typeof i.value === "number" ? i.value : i.value.replace("|", ""))).join("|");
+    return objectArray
+      .map(i =>
+        typeof i.value === "number" ? i.value : i.value.replace("|", "")
+      )
+      .join("|");
   }
   if (typeof objectArray == "object") {
     return objectArray.value;

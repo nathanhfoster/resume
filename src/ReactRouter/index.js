@@ -22,7 +22,7 @@ class ReactRouter extends PureComponent {
     this.state = {};
   }
 
-  static propTypes = {};
+  static propTypes = { User: PropTypes.objectOf(PropTypes.any) };
 
   static defaultProps = {};
 
@@ -49,7 +49,9 @@ class ReactRouter extends PureComponent {
 
   renderRedirectOrComponent = (shouldRedirect, route, Component) => {
     const { history } = this.props;
-    return shouldRedirect ? () => <Redirect push to={RouterLinkPush(history, route)} /> : Component;
+    return shouldRedirect
+      ? () => <Redirect push to={RouterLinkPush(history, route)} />
+      : Component;
   };
 
   getRouteItems = props => {
@@ -58,7 +60,11 @@ class ReactRouter extends PureComponent {
     return [
       {
         path: [RouteMap.SETTINGS],
-        component: this.renderRedirectOrComponent(!User.token, RouteMap.HOME, Settings)
+        component: this.renderRedirectOrComponent(
+          !User.token,
+          RouteMap.HOME,
+          Settings
+        )
       },
       { path: [RouteMap.HOME], component: Home },
       { path: [RouteMap.PRIVACY_POLICY], component: PrivacyPolicy }
@@ -74,11 +80,15 @@ class ReactRouter extends PureComponent {
   render() {
     const { routeItems } = this.state;
     return (
-      <Switch>
-        {this.renderRouteItems(routeItems)}
-        <Route component={PageNotFound} />
-      </Switch>
+      <div className="routeOverlay" style={{ bottom: 0 }}>
+        <Switch>
+          {this.renderRouteItems(routeItems)}
+          <Route component={PageNotFound} />
+        </Switch>
+      </div>
     );
   }
 }
-export default withRouter(reduxConnect(mapStateToProps, mapDispatchToProps)(ReactRouter));
+export default withRouter(
+  reduxConnect(mapStateToProps, mapDispatchToProps)(ReactRouter)
+);
