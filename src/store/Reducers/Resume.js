@@ -2,12 +2,31 @@ import { ReduxActions } from "../../constants.js";
 
 const defaultState = {
   Experience: [
+      {
+      title: "Senior Frontend Developer",
+      company: "eScreenLogic",
+      location: "Gold River, Ca",
+      start_date: "Aug 2019",
+      end_date: "Present",
+      description:
+        "Acclimate to tech stack built in React, Redux, Cassandra, Elastic Search, AWS, and a Java backend. Support CTO by:",
+      bullet_points: [
+        { title: "Leading frontend development." },
+        { title: "Establish high cohesion and loose coupling for React components, React router, Redux reducers, Redux actions, API requests, and CSS modules." },
+        { title: "Built customized Google Map component that:" },
+        { title: "Externally renders SVG polygons and marker cluster systems to visualize, manage, and create project sites." },
+        { title: "Internally Integrated external api parlay overlay." },
+        { title: "Built Project Detial page where employees and customers can visualize and manage appropriate content." },
+        { title: "Refined and converted Fetch API Request to Axios to support older browsers." }
+      ],
+      media: []
+    },
     {
       title: "Full Stack Software Engineer",
       company: "Accenture",
       location: "Sacramento, Ca",
       start_date: "Feb 2019",
-      end_date: "Present",
+      end_date: "Aug 2019",
       description:
         "CalHEERS project - working on the full stack of a web app that determines the benefits a person is entitled to under The Affordable Care Act and allows them to enroll in eligible plans.",
       bullet_points: [
